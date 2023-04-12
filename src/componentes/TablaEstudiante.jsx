@@ -1,12 +1,13 @@
 
-
-
+import React from 'react';
+import { useState } from 'react';
+import { FormularioEstudiante } from './FormularioEstudiante';
 
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
 
     const editar = () => {
-
+        
     }
     function deleteRow(event) {
         const row = event.target.parentNode.parentNode;
