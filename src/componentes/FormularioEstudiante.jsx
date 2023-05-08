@@ -9,16 +9,15 @@ export const FormularioEstudiante = ({ agregar}) => {
     
 
     const guardarEstudiante = (event) => {
-        event.preventDefault();
 
-        if (isNaN(id) || id == "") {
-            alert("El ID del estudiante debe ser un número");
-            return;
-        }
-        if (id.length < 6 || id.length > 10){
-            alert("El ID debe tener minimo 6 y maximo 10")
-            return;
-        }
+        // if (isNaN(id) || id == "") {
+        //     alert("El ID del estudiante debe ser un número");
+        //     return;
+        // }
+        // if (id.length < 6 || id.length > 10){
+        //     alert("El ID debe tener minimo 6 y maximo 10")
+        //     return;
+        // }
         if (nombre.length < 3){
             alert("El nombre debe tener minimo 3 letras")
             return;
@@ -43,10 +42,10 @@ export const FormularioEstudiante = ({ agregar}) => {
     return (
         <>
             <form onSubmit={guardarEstudiante}>
-                <div className="form-group ">
+                {/* <div className="form-group ">
                 <label className="input-group-text" for="inputGroupSelect01">Id Estudiante</label>
                     <input type="id" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} />
-                </div>
+                </div> */}
                 <div className="form-group">
                 <label class="input-group-text" for="inputGroupSelect01">Nombre</label>
                     <input type="text" className="form-control" id="nombre" placeholder="Nombre" value={nombre} onChange={(event) => setNombre(event.target.value)} />
@@ -79,6 +78,16 @@ export const FormularioEstudiante = ({ agregar}) => {
                     <option value="Comunicacion">Comunicacion</option>
                     <option value="Educacion">Educacion</option>
                     <option value="Derecho">Derecho</option>
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="genero">Genero</label>
+                    <br></br>
+                    <select ClassName="form-control" id="genero" placeholder="genero" value={genero} onChange={(event) => setGenero(event.target.value)}>
+                    <option value="">--Seleccione su genero--</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="No decirlo">No decirlo</option>
                     </select>
                 </div>
                 <button type="submit" className="btn btn-primary">Registrar</button>
