@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
+import { postEstudiante } from "./peticiones/postEstudiante";
 
 
 
@@ -14,6 +15,7 @@ export const EstudiantesApp = () => {
 
     const agregarEstudiante = (estudiante) => {
         setEstudiantes([...estudiantes, estudiante])
+        postEstudiante(estudiante);
     }
     const cargueEstudiantes = async () => {
         const datos = await getEstudiantes()
