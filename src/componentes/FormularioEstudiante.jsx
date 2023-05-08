@@ -41,7 +41,7 @@ export const FormularioEstudiante = ({ agregar}) => {
         <>
             <form onSubmit={guardarEstudiante}>
                 <div className="form-group ">
-                <label class="input-group-text" for="inputGroupSelect01">Id Estudiante</label>
+                <label className="input-group-text" for="inputGroupSelect01">Id Estudiante</label>
                     <input type="id" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} />
                 </div>
                 <div className="form-group">
