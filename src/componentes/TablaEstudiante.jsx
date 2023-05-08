@@ -101,6 +101,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                   <th scope="col">Nombre</th>
                   <th scope="col">Semestre</th>
                   <th scope="col">Facultad</th>
+                  <th scope="col">Genero</th>
                 </tr>
               </thead>
               <tbody>
@@ -109,6 +110,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                   <td>{estudianteEncontradoFac.nombre}</td>
                   <td>{estudianteEncontradoFac.semestre}</td>
                   <td>{estudianteEncontradoFac.facultad}</td>
+                  <td>{estudianteEncontradoFac.genero}</td>
                 </tr>
               </tbody>
             </table>
@@ -124,6 +126,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                 <th scope="col">Nombre</th>
                 <th scope="col">Semestre</th>
                 <th scope="col">Facultad</th>
+                <th scope="col">Genero</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
@@ -134,6 +137,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                   <td>{estudiante.nombre}</td>
                   <td>{estudiante.semestre}</td>
                   <td>{estudiante.facultad}</td>
+                  <td>{estudiante.genero}</td>
                   <td>
                    
                   </td>

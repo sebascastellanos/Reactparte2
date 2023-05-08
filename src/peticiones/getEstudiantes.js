@@ -7,7 +7,9 @@ const data = await resp.json();
 const estudianteList = data.map(estudiante => ({
   id : estudiante.codigo,
   nombre : estudiante.nombre,
-  semestre : estudiante.semestre
+  semestre : estudiante.semestre,
+  facultad : estudiante.facultad,
+  genero : estudiante.genero
 }))
 return estudianteList;
 }

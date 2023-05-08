@@ -5,6 +5,7 @@ export const FormularioEstudiante = ({ agregar}) => {
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
     const [facultad, setFacultad] = useState("");
+    const [genero, setGenero] = useState("");
     
 
     const guardarEstudiante = (event) => {
@@ -29,12 +30,14 @@ export const FormularioEstudiante = ({ agregar}) => {
             nombre: nombre,
             semestre: semestre,
             facultad: facultad,
+            genero: genero
         }
         agregar(estudiante)
         setId("");
         setNombre("");
         setSemestre("");
         setFacultad("");
+        setGenero("");
     }
 
     return (
