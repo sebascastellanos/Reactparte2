@@ -47,8 +47,10 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
   return (
     <>
       <form onSubmit={buscarEstFac}>
-        <div className="form-group">
-          <label htmlFor="buscarFac">Buscar Facultad</label>
+        <br />
+        <div className="form-group input-group">
+          
+        
           {/* <input type="text" className="form-control" id="buscarName" placeholder="Buscar " value={buscarFac} onChange={(event) => setBuscarFac(event.target.value)} /> */}
           <br></br>
           <select ClassName="form-control" id="facultad" placeholder="facultad" value={buscarFac} onChange={(event) => setBuscarFac(event.target.value)}>
