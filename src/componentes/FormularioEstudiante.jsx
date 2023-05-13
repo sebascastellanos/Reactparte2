@@ -7,17 +7,9 @@ export const FormularioEstudiante = ({ agregar }) => {
     const [facultad, setFacultad] = useState("");
     const [genero, setGenero] = useState("");
 
-
     const guardarEstudiante = (event) => {
 
-        // if (isNaN(id) || id == "") {
-        //     alert("El ID del estudiante debe ser un número");
-        //     return;
-        // }
-        // if (id.length < 6 || id.length > 10){
-        //     alert("El ID debe tener minimo 6 y maximo 10")
-        //     return;
-        // }
+        
         if (nombre.length < 3) {
             alert("El nombre debe tener minimo 3 letras")
             return;
