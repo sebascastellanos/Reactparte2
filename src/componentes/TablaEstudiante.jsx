@@ -1,20 +1,34 @@
 import { useState } from "react";
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
-  
+
   // const [buscarName, setBuscarName] = useState("");
   const [buscarFac, setBuscarFac] = useState("");
   // const [estudianteEncontradoName, setEstudianteEncontradoName] = useState(null);
   const [estudiantesEncontradosFac, setEstudiantesEncontradosFac] = useState([]);
- 
 
-  const editar = () => {
-        
+
+  const editar = (event) => {
+    
+
+    
   }
 
   function deleteRow(event) {
-      const row = event.target.parentNode.parentNode;
-      row.parentNode.removeChild(row);
+    const row = event.target.parentNode.parentNode;
+    const idCell = row.querySelector('td:first-child');//toma la primera data de el respectivo row lo que seria el id
+    const id = idCell.textContent.trim();
+
+    fetch(`http://localhost:8080/estudiante/eliminar/${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+
+          row.parentNode.removeChild(row);
+        }
+      })
+
   }
 
   const buscarEstudiantePorFacultad = (facultad) => {
@@ -30,7 +44,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
     const estudiantesEncontrados = buscarEstudiantePorFacultad(buscarFac);
     setEstudiantesEncontradosFac(estudiantesEncontrados);
   };
-  
+
   // const buscarEstName = (event) => {    
   //   event.preventDefault();
   //   const elementoEncontradoName = buscarEstudiantePorNombre(buscarName);
@@ -49,8 +63,8 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
       <form onSubmit={buscarEstFac}>
         <br />
         <div className="form-group input-group">
-          
-        
+
+
           {/* <input type="text" className="form-control" id="buscarName" placeholder="Buscar " value={buscarFac} onChange={(event) => setBuscarFac(event.target.value)} /> */}
           <br></br>
           <select ClassName="form-control" id="facultad" placeholder="facultad" value={buscarFac} onChange={(event) => setBuscarFac(event.target.value)}>
@@ -68,32 +82,32 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
       </form>
 
       {
-      estudiantesEncontradosFac.length > 0 ?(
-        // <div>
-        //   <h3>Estudiante encontrado:</h3>
-        //   <table className="table">
-        //     <thead>
-        //       <tr>
-        //         <th scope="col">Id Estudiante</th>
-        //         <th scope="col">Nombre</th>
-        //         <th scope="col">Semestre</th>
-        //         <th scope="col">Facultad</th>
-        //       </tr>
-        //     </thead>
-        //     <tbody>
-        //     {listaEstudiantes.map((estudiante) => (
-        //         <tr key={estudiante.facultad}>
-        //           <td>{estudiante.id}</td>
-        //           <td>{estudiante.nombre}</td>
-        //           <td>{estudiante.semestre}</td>
-        //           <td>{estudiante.facultad}</td>
-        //         </tr>
-        //       ))}
-        //     </tbody>
-        //   </table>
-        //   <button className="btn btn-info" onClick={limpiarBusqueda}> Limpiar búsqueda
-        //   </button>
-        // </div>
+        estudiantesEncontradosFac.length > 0 ? (
+          // <div>
+          //   <h3>Estudiante encontrado:</h3>
+          //   <table className="table">
+          //     <thead>
+          //       <tr>
+          //         <th scope="col">Id Estudiante</th>
+          //         <th scope="col">Nombre</th>
+          //         <th scope="col">Semestre</th>
+          //         <th scope="col">Facultad</th>
+          //       </tr>
+          //     </thead>
+          //     <tbody>
+          //     {listaEstudiantes.map((estudiante) => (
+          //         <tr key={estudiante.facultad}>
+          //           <td>{estudiante.id}</td>
+          //           <td>{estudiante.nombre}</td>
+          //           <td>{estudiante.semestre}</td>
+          //           <td>{estudiante.facultad}</td>
+          //         </tr>
+          //       ))}
+          //     </tbody>
+          //   </table>
+          //   <button className="btn btn-info" onClick={limpiarBusqueda}> Limpiar búsqueda
+          //   </button>
+          // </div>
           <div>
             <h3>Estudiante encontrado:</h3>
             <table className="table">
@@ -107,58 +121,61 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                 </tr>
               </thead>
               <tbody>
-              {estudiantesEncontradosFac.map((estudiante, index) => (
-                <tr key={index}>
-                  <td>{estudiante.id}</td>
-                  <td>{estudiante.nombre}</td>
-                  <td>{estudiante.semestre}</td>
-                  <td>{estudiante.facultad}</td>
-                  <td>{estudiante.genero}</td>
-                  <td>
-                    <button className="btn btn-danger" onClick={deleteRow}> Eliminar
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                {estudiantesEncontradosFac.map((estudiante, index) => (
+                  <tr key={index}>
+                    <td>{estudiante.id}</td>
+                    <td>{estudiante.nombre}</td>
+                    <td>{estudiante.semestre}</td>
+                    <td>{estudiante.facultad}</td>
+                    <td>{estudiante.genero}</td>
+                    <td>
+                      <button className="btn btn-danger" onClick={deleteRow}> Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
             <button className="btn btn-info" onClick={limpiarBusqueda}> Limpiar búsqueda
             </button>
           </div>
-      ) : (
-        <div>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Id Estudiante</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Semestre</th>
-                <th scope="col">Facultad</th>
-                <th scope="col">Genero</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {listaEstudiantes.map((estudiante) => (
-                <tr key={estudiante.facultad}>
-                  <td>{estudiante.id}</td>
-                  <td>{estudiante.nombre}</td>
-                  <td>{estudiante.semestre}</td>
-                  <td>{estudiante.facultad}</td>
-                  <td>{estudiante.genero}</td>
-                  <td>
-                   
-                  </td>
-                  <td>
-                    <button className="btn btn-danger" onClick={deleteRow}> Eliminar
-                    </button>
-                  </td>
+        ) : (
+          <div>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id Estudiante</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Semestre</th>
+                  <th scope="col">Facultad</th>
+                  <th scope="col">Genero</th>
+                  <th scope="col">Modificar</th>
+                  <th scope="col">Eliminar</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {listaEstudiantes.map((estudiante) => (
+                  <tr key={estudiante.facultad}>
+                    <td>{estudiante.id}</td>
+                    <td>{estudiante.nombre}</td>
+                    <td>{estudiante.semestre}</td>
+                    <td>{estudiante.facultad}</td>
+                    <td>{estudiante.genero}</td>
+                    <td>
+                      <button className="btn btn-success" onClick={editar}> Editar
+                      </button>
+                    </td>
+                    <td>
+                      <button className="btn btn-danger" onClick={deleteRow}> Eliminar
+                      </button>
+                    </td>
+
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
     </>
   );
 };
