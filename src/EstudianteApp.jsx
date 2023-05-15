@@ -5,11 +5,6 @@ import { getEstudiantes } from "./peticiones/getEstudiantes";
 import { postEstudiante } from "./peticiones/postEstudiante";
 import { editarEstudiante } from "./peticiones/editarEstudiante";
 
-
-
-
-//<ListaEstudiantes lista={estudiantes}/>
-
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
