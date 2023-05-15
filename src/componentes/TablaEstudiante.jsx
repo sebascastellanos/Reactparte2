@@ -5,7 +5,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
   // const [buscarName, setBuscarName] = useState("");
   const [buscarFac, setBuscarFac] = useState("");
   // const [estudianteEncontradoName, setEstudianteEncontradoName] = useState(null);
-  const [estudianteEncontradoFac, setEstudianteEncontradoFac] = useState(null);
+  const [estudiantesEncontradosFac, setEstudiantesEncontradosFac] = useState([]);
  
 
   const editar = () => {
@@ -18,7 +18,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
   }
 
   const buscarEstudiantePorFacultad = (facultad) => {
-    return listaEstudiantes.find((estudiante) => estudiante.facultad == facultad)
+    return listaEstudiantes.filter((estudiante) => estudiante.facultad == facultad)
   }
 
   // const buscarEstudiantePorNombre = (nombre) => {
@@ -27,10 +27,10 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
 
   const buscarEstFac = (event) => {
     event.preventDefault();
-    const elementoEncontradoFac = buscarEstudiantePorFacultad(buscarFac);
-    setEstudianteEncontradoFac(elementoEncontradoFac);
+    const estudiantesEncontrados = buscarEstudiantePorFacultad(buscarFac);
+    setEstudiantesEncontradosFac(estudiantesEncontrados);
   };
-
+  
   // const buscarEstName = (event) => {    
   //   event.preventDefault();
   //   const elementoEncontradoName = buscarEstudiantePorNombre(buscarName);
@@ -41,7 +41,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
     // setBuscarName("");
     setBuscarFac("");
     // setEstudianteEncontradoName(null);
-    setEstudianteEncontradoFac(null);
+    setEstudiantesEncontradosFac([]);
   };
 
   return (
@@ -68,7 +68,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
       </form>
 
       {
-      estudianteEncontradoFac ? (
+      estudiantesEncontradosFac.length > 0 ?(
         // <div>
         //   <h3>Estudiante encontrado:</h3>
         //   <table className="table">
@@ -107,13 +107,19 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                 </tr>
               </thead>
               <tbody>
-                <tr key={estudianteEncontradoFac.id}>
-                  <td>{estudianteEncontradoFac.id}</td>
-                  <td>{estudianteEncontradoFac.nombre}</td>
-                  <td>{estudianteEncontradoFac.semestre}</td>
-                  <td>{estudianteEncontradoFac.facultad}</td>
-                  <td>{estudianteEncontradoFac.genero}</td>
+              {estudiantesEncontradosFac.map((estudiante, index) => (
+                <tr key={index}>
+                  <td>{estudiante.id}</td>
+                  <td>{estudiante.nombre}</td>
+                  <td>{estudiante.semestre}</td>
+                  <td>{estudiante.facultad}</td>
+                  <td>{estudiante.genero}</td>
+                  <td>
+                    <button className="btn btn-danger" onClick={deleteRow}> Eliminar
+                    </button>
+                  </td>
                 </tr>
+              ))}
               </tbody>
             </table>
             <button className="btn btn-info" onClick={limpiarBusqueda}> Limpiar búsqueda
