@@ -31,7 +31,7 @@ export const FormularioEstudiante = ({ agregar }) => {
 
     return (
         <>
-            <h1 className="text-center text-primary mb-4" style={{ fontSize: "100px", backgroundColor: "#BDDFE0"}}>Estudiantes</h1>
+            <h1 className="text-center text-primary " style={{ fontSize: "100px", backgroundColor: "#BDDFE0"}}>Estudiantes</h1>
             <form onSubmit={guardarEstudiante} style={{ backgroundColor: "#BDDFE0" }}>
                 <div className="form-group input-group">
                     <label class="input-group-text" for="inputGroupSelect01">Nombre</label>
@@ -84,7 +84,9 @@ export const FormularioEstudiante = ({ agregar }) => {
             </form>
             <style>
                 {`
-                
+                h1 {
+                    
+                }
                  ::-webkit-scrollbar {
             width: 10px;
           }
