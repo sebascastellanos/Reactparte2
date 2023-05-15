@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FormularioEstudiante } from "./FormularioEstudiante";
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
 
@@ -9,9 +10,6 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
 
 
   const editar = (event) => {
-    
-
-    
   }
 
   function deleteRow(event) {
@@ -163,6 +161,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                     <td>{estudiante.genero}</td>
                     <td>
                       <button className="btn btn-success" onClick={editar}> Editar
+
                       </button>
                     </td>
                     <td>

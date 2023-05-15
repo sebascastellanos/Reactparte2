@@ -3,6 +3,8 @@ import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
 import { postEstudiante } from "./peticiones/postEstudiante";
+import { editarEstudiante } from "./peticiones/editarEstudiante";
+
 
 
 
@@ -24,6 +26,11 @@ export const EstudiantesApp = () => {
     useEffect(()=>{
         cargueEstudiantes();
     },[])
+    const editarEstudiante = (estudiante) => {
+        console.log(estudiante);
+        setEstudiantes(estudiante);
+    }
+    
     return (
         <>
             <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
