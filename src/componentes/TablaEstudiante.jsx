@@ -2,9 +2,9 @@ import { useState } from "react";
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
 
-  // const [buscarName, setBuscarName] = useState("");
+ 
   const [buscarFac, setBuscarFac] = useState("");
-  // const [estudianteEncontradoName, setEstudianteEncontradoName] = useState(null);
+  
   const [estudiantesEncontradosFac, setEstudiantesEncontradosFac] = useState([]);
 
 
@@ -35,9 +35,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
     return listaEstudiantes.filter((estudiante) => estudiante.facultad == facultad)
   }
 
-  // const buscarEstudiantePorNombre = (nombre) => {
-  //   return listaEstudiantes.find((estudiante) => estudiante.nombre === nombre);
-  // };
+  
 
   const buscarEstFac = (event) => {
     event.preventDefault();
@@ -45,16 +43,12 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
     setEstudiantesEncontradosFac(estudiantesEncontrados);
   };
 
-  // const buscarEstName = (event) => {    
-  //   event.preventDefault();
-  //   const elementoEncontradoName = buscarEstudiantePorNombre(buscarName);
-  //   setEstudianteEncontradoName(elementoEncontradoName);
-  // };
+ 
 
   const limpiarBusqueda = () => {
-    // setBuscarName("");
+    
     setBuscarFac("");
-    // setEstudianteEncontradoName(null);
+   
     setEstudiantesEncontradosFac([]);
   };
 
@@ -65,7 +59,6 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
         <div className="form-group input-group">
 
 
-          {/* <input type="text" className="form-control" id="buscarName" placeholder="Buscar " value={buscarFac} onChange={(event) => setBuscarFac(event.target.value)} /> */}
           <br></br>
           <select ClassName="form-control" id="facultad" placeholder="facultad" value={buscarFac} onChange={(event) => setBuscarFac(event.target.value)}>
             <option value="">--Seleccione la facultad--</option>
@@ -83,31 +76,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
 
       {
         estudiantesEncontradosFac.length > 0 ? (
-          // <div>
-          //   <h3>Estudiante encontrado:</h3>
-          //   <table className="table">
-          //     <thead>
-          //       <tr>
-          //         <th scope="col">Id Estudiante</th>
-          //         <th scope="col">Nombre</th>
-          //         <th scope="col">Semestre</th>
-          //         <th scope="col">Facultad</th>
-          //       </tr>
-          //     </thead>
-          //     <tbody>
-          //     {listaEstudiantes.map((estudiante) => (
-          //         <tr key={estudiante.facultad}>
-          //           <td>{estudiante.id}</td>
-          //           <td>{estudiante.nombre}</td>
-          //           <td>{estudiante.semestre}</td>
-          //           <td>{estudiante.facultad}</td>
-          //         </tr>
-          //       ))}
-          //     </tbody>
-          //   </table>
-          //   <button className="btn btn-info" onClick={limpiarBusqueda}> Limpiar búsqueda
-          //   </button>
-          // </div>
+         
           <div>
             <h3>Estudiante encontrado:</h3>
             <table className="table">
