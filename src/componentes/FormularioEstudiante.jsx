@@ -29,8 +29,27 @@ export const FormularioEstudiante = ({ agregar }) => {
         setGenero("");
     }
 
+    function habilitarButton() {
+        var semes = document.getElementById("semes").value
+        var fac = document.getElementById("facultad").value
+        var gen = document.getElementById("genero").value
+        if (semes == "") {
+            document.getElementById("registrar").disabled = true;
+        } else if (fac == "") {
+            document.getElementById("registrar").disabled = true;
+        } else if (gen == "") {
+            document.getElementById("registrar").disabled = true;
+        } else {
+            document.getElementById("registrar").disabled = false;
+        }
+    }
+
+
     return (
         <>
+        <script>
+            
+        </script>
             <h1 className="text-center text-primary " style={{ fontSize: "100px", backgroundColor: "#BDDFE0"}}>Estudiantes</h1>
             <form onSubmit={guardarEstudiante} style={{ backgroundColor: "#BDDFE0" }}>
                 <div className="form-group input-group">
@@ -41,7 +60,7 @@ export const FormularioEstudiante = ({ agregar }) => {
                 <div className="form-group input-group">
                     <label class="input-group-text" for="inputGroupSelect01">Semestre</label>
                     <br></br>
-                    <select class="custom-select" ClassName="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
+                    <select id="semes" value={semestre} onChange={(event) => {setSemestre(event.target.value); habilitarButton();}}>
                         <option value="">--Seleccione el semestre--</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -59,7 +78,7 @@ export const FormularioEstudiante = ({ agregar }) => {
                 <div className="form-group input-group">
                     <label class="input-group-text" for="inputGroupSelect01">Facultad</label>
                     <br></br>
-                    <select ClassName="form-control" id="facultad" placeholder="facultad" value={facultad} onChange={(event) => setFacultad(event.target.value)}>
+                    <select id="facultad" value={facultad} onChange={(event) => {setFacultad(event.target.value); habilitarButton();}}>
                         <option value="">--Seleccione la facultad--</option>
                         <option value="Ingenieria">Ingenieria</option>
                         <option value="Medicina">Medicina</option>
@@ -72,7 +91,7 @@ export const FormularioEstudiante = ({ agregar }) => {
                 <div className="form-group input-group">
                     <label class="input-group-text" for="inputGroupSelect01">Genero</label>
                     <br></br>
-                    <select ClassName="form-control" id="genero" placeholder="genero" value={genero} onChange={(event) => setGenero(event.target.value)}>
+                    <select id="genero" value={genero} onChange={(event) => {setGenero(event.target.value); habilitarButton();}}>
                         <option value="">--Seleccione su genero--</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
@@ -80,13 +99,10 @@ export const FormularioEstudiante = ({ agregar }) => {
                     </select>
                 </div>
                 <br />  
-                <button type="submit" className="btn btn-primary">Registrar</button>
+                <button id = "registrar" type="submit" className="btn btn-primary" disabled>Registrar</button>
             </form>
             <style>
                 {`
-                h1 {
-                    
-                }
                  ::-webkit-scrollbar {
             width: 10px;
           }
