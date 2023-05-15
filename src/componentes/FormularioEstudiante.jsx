@@ -8,13 +8,10 @@ export const FormularioEstudiante = ({ agregar }) => {
     const [genero, setGenero] = useState("");
 
     const guardarEstudiante = (event) => {
-
-        
         if (nombre.length < 3) {
             alert("El nombre debe tener minimo 3 letras")
             return;
         }
-
 
         let estudiante = {
             id: id,
@@ -23,6 +20,7 @@ export const FormularioEstudiante = ({ agregar }) => {
             facultad: facultad,
             genero: genero
         }
+        
         agregar(estudiante)
         setId("");
         setNombre("");
@@ -33,15 +31,8 @@ export const FormularioEstudiante = ({ agregar }) => {
 
     return (
         <>
-            
-
-            <h1 className="text-center text-primary mb-4" style={{ fontSize: "100px", backgroundColor: "#BDDFE0"  }}>Estudiantes</h1>
-
+            <h1 className="text-center text-primary " style={{ fontSize: "100px", backgroundColor: "#BDDFE0"}}>Estudiantes</h1>
             <form onSubmit={guardarEstudiante} style={{ backgroundColor: "#BDDFE0" }}>
-                {/* <div className="form-group ">
-                <label className="input-group-text" for="inputGroupSelect01">Id Estudiante</label>
-                    <input type="id" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} />
-                </div> */}
                 <div className="form-group input-group">
                     <label class="input-group-text" for="inputGroupSelect01">Nombre</label>
                     <input type="text" className="form-control" id="nombre" placeholder="Nombre" value={nombre} onChange={(event) => setNombre(event.target.value)} />
@@ -50,7 +41,6 @@ export const FormularioEstudiante = ({ agregar }) => {
                 <div className="form-group input-group">
                     <label class="input-group-text" for="inputGroupSelect01">Semestre</label>
                     <br></br>
-                    {/* <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} /> */}
                     <select class="custom-select" ClassName="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
                         <option value="">--Seleccione el semestre--</option>
                         <option value="1">1</option>
@@ -65,7 +55,7 @@ export const FormularioEstudiante = ({ agregar }) => {
                         <option value="10">10</option>
                     </select>
                 </div>
-                <br />
+                <br/>
                 <div className="form-group input-group">
                     <label class="input-group-text" for="inputGroupSelect01">Facultad</label>
                     <br></br>
@@ -89,11 +79,14 @@ export const FormularioEstudiante = ({ agregar }) => {
                         <option value="No decirlo">No decirlo</option>
                     </select>
                 </div>
-                <br />
+                <br />  
                 <button type="submit" className="btn btn-primary">Registrar</button>
             </form>
             <style>
                 {`
+                h1 {
+                    
+                }
                  ::-webkit-scrollbar {
             width: 10px;
           }
@@ -107,7 +100,6 @@ export const FormularioEstudiante = ({ agregar }) => {
           }
         `}
             </style>
-
         </>
     )
         }

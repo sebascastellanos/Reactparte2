@@ -8,7 +8,6 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
   
   const [estudiantesEncontradosFac, setEstudiantesEncontradosFac] = useState([]);
 
-
   const editar = (event) => {
   }
 
@@ -22,11 +21,9 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
     })
       .then(response => {
         if (response.ok) {
-
           row.parentNode.removeChild(row);
         }
       })
-
   }
 
   const buscarEstudiantePorFacultad = (facultad) => {
@@ -96,8 +93,6 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                     <td>{estudiante.facultad}</td>
                     <td>{estudiante.genero}</td>
                     <td>
-                      <button className="btn btn-danger" onClick={deleteRow}> Eliminar
-                      </button>
                     </td>
                   </tr>
                 ))}
